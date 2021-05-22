@@ -9,3 +9,6 @@ TO RUN:
 
 Additional info:
 Uses .Net core 2.1
+
+**UPDATED
+Now uses a WebAPI controller to handle game logic and JQuery to consume it.
