@@ -7,7 +7,7 @@ window.onload = function () {
     if (btn.innerHTML == "Give Up") {
         canv = document.getElementById("gc");
         ctx = canv.getContext("2d");
-        document.addEventListener("click", gameOptionsSwitch);
+        document.addEventListener("click", lightSwitch);
         gameOptions = new gameOptions();
         gameStart();
     }
@@ -30,22 +30,19 @@ function gameStart() {
     getLights();
 }
 
-function gameOptionsSwitch(e) {
+function lightSwitch(e) {
 
     if (e.target.id != "gc")
         return;
     //Block clicked
-    var closestX = Math.floor(e.offsetX / 100) * 100;
-    var closestY = Math.floor(e.offsetY / 100) * 100;
-
-    var blockX = gameOptions.blockmargin + ((closestX / 100) * gameOptions.blocksize);
-    var blockY = gameOptions.blockmargin + ((closestY / 100) * gameOptions.blocksize);
+    var closestX = Math.floor(e.offsetX / 100);
+    var closestY = Math.floor(e.offsetY / 100);
 
     var data = {
         "Id": 1,
         "Toggle": true,
-        "PositionX": closestX / 100,
-        "PositionY": closestY / 100
+        "PositionX": closestX,
+        "PositionY": closestY
     };
 
     $.post({
